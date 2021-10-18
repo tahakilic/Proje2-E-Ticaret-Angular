@@ -1,5 +1,6 @@
 <!--<h3 *ngIf="products; else noProduct">{{title}}</h3>-->
 
+<app-category></app-category>
 <div class="form-control">
   <input class="form-control" id="productName" placeholder="Arama Metninizi Giriniz" [(ngModel)]="filterText"/>
   <!--ngModel çift yönlü iletişim kurar-->
@@ -7,13 +8,13 @@
 </div>
 
 
-<div class="row">
+<div class="row " >
   <ng-template #noProduct>
     <div class="alert alert-primary" role="alert">
       Bu Kotegoride ürün Yoktur.
     </div>
   </ng-template>
-  <div *ngFor="let product of products | productFilter:filterText" class="productbox" style="width: 18rem;">
+  <div *ngFor="let product of products | productFilter:filterText" class="productBox" >
     <!--productFilter filtreleme için-->
     <img [src]="product.imageUrl" class="card-img-top" alt="...">
     <div class="card-body">

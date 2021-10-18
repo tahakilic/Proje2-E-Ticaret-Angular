@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Product} from "../product/product";
 import {Observable, throwError} from "rxjs";
 import {catchError, tap} from "rxjs/operators";
@@ -20,6 +20,19 @@ export class ProductService {
 
   getProductsByCategory(categoryId:Category):Observable<Product[]>{  //observable subscribe görene kadar işlem bitmez
     return this.httpClient.get<Product[]>(this.path+"?categoryId="+categoryId).pipe(
+      tap(data=>console.warn(JSON.stringify(data))),
+      catchError(this.handleError)
+    )
+  }
+
+  addProduct(product:Product):Observable<Product>{
+    const httpOptions={
+      headers: new HttpHeaders({
+        "Content-Type":"application/json",
+        "Authorization":"Token"
+      })
+    }
+    return this.httpClient.post<Product>(this.path,product,httpOptions).pipe(
       tap(data=>console.warn(JSON.stringify(data))),
       catchError(this.handleError)
     )
