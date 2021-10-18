@@ -1,0 +1,19 @@
+<form class="form-signin" [formGroup]="form">
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 fw-normal">Oturum Açma</h1>
+  </div>
+  <div class="form-floating">
+    <input type="text" class="form-control" id="UserName" placeholder="Kullanıcı Adı" formControlName="userName" required>
+    <label for="UserName">Kullanıcı Adı</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="password" name="password" placeholder="Şifre" formControlName="password" required>
+    <label for="password">Şifre</label>
+  </div>
+
+  <div class="checkbox mb-3">
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="login()">Oturum Aç</button>
+  <p class="text-center mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+</form>
+
